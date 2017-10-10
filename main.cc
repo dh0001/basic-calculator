@@ -14,5 +14,5 @@ int main () {
 	
 	cin >> s;
 	
-	cout << s << endl;
+	cout << solve_equation (s) << endl;
 }
