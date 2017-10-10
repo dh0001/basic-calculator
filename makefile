@@ -1,7 +1,7 @@
 CXX := g++
-CXXFLAGS := -Wall -MMD
+CXXFLAGS := -Wall -MMD -g -std=c++11
 EXEC := main
-SOURCES := *.cc
+SOURCES := $(wildcard *.cc)
 OBJECTS := ${SOURCES:.cc=.o}
 DEPENDS := ${SOURCES:.cc=.d}
 

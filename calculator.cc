@@ -2,6 +2,7 @@
 #include "calculator.h"
 #include <algorithm>
 #include <sstream>
+#include <iostream>
 
 using namespace std;
 
@@ -16,35 +17,38 @@ string remove_spaces (string &s) {
 
 int solve_no_space (const string &s) {
 	
-	stringstream ss;
+	istringstream ss;
 	
 	ss.str(s);
 	
 	if (ss.peek() == '(') ss.get();
 	
 	int param1;
+	ss >> param1;
+	
+	if (ss.peek() == -1 or ss.peek() == ')') return param1;
+	
 	int param2;
 	char op;
-	
-	ss >> param1;
+
 	ss >> op;
 	ss >> param2;
 	
+	string rest;
+	
+	getline (ss, rest);
+	
 	if (op == '+') {
-		ss << param2;
-		return param1 + solve_no_space (ss.str());
+		return param1 + solve_no_space (to_string (param2) + rest);
 	}
 	else if (op == '-') {
-		ss << param2;
-		return param1 - solve_no_space (ss.str());
+		return param1 - solve_no_space (to_string (param2) + rest);
 	}
 	else if (op == '*') {
-		ss << (param1 * param2);
-		return solve_no_space (ss.str());
+		return solve_no_space (to_string (param1 * param2) + rest);
 	}
 	else {
-		ss << (param1 / param2);
-		return solve_no_space (ss.str());
+		return solve_no_space (to_string (param1 / param2) + rest);
 	}
 }
 

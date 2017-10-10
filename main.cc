@@ -13,6 +13,6 @@ int main () {
     string s;
 	
 	cin >> s;
-	
+
 	cout << solve_equation (s) << endl;
 }
