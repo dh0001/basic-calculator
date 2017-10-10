@@ -1,8 +1,16 @@
-main: main.o calculator.o
-	g++ main.o calculator.o -o main
+CXX := g++
+CXXFLAGS := -Wall -MMD
+EXEC := main
+SOURCES := *.cc
+OBJECTS := ${SOURCES:.cc=.o}
+DEPENDS := ${SOURCES:.cc=.d}
+
+${EXEC}: ${OBJECTS}
+	${CXX} ${CXXFLAGS} ${OBJECTS} -o ${EXEC}
 	
-main.o: main.cc calculator.h
-	g++ -c main.cc
-	
-calculator.o: calculator.cc calculator.h
-	g++ -c calculator.cc
+-include ${DEPENDS}
+
+.PHONY: clean
+
+clean:
+	rm ${OBJECTS} ${EXEC} ${DEPENDS}
