@@ -1,16 +1,10 @@
-# basic-calculator
+# calculator
 
-A C++ function which takes a string corresponding to an equation, and returns the value of the equation simplified to a single expression.  Division is integer division.
+A C++ function which takes a string corresponding to an equation, and returns the value of the equation simplified to a single expression.
 
-An expression is a number.
+One day this might be an Android app.
 
-An operation is *, /, +, -.
+## Notes
 
-An equation can have brackets, numbers, and operations within.  It starts with an expression, and is followed by any number of (operation then expression).
-
-Brackets enclose an equation, and act as a single expression.
-
-Todo:
-- add verify function
-- float division
-- more operations
+* Division is integer division
+* Allowed operations are *, /, +, -.
